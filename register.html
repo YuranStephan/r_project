@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar Admin</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+
+<body>
+    <div class="container-fluid vh-100 d-flex justify-content-center align-items-center">
+        <div class="card p-4 shadow-lg animate__animated animate__fadeIn" style="width: 100%; max-width: 400px; background: rgba(255, 255, 255, 0.9);">
+            <div class="card-body">
+                <h3 class="card-title text-center mb-4">Registrar Admin</h3>
+                <form id="registerForm" action="register.php" method="POST">
+                    <div class="form-group">
+                        <label for="username">Nome de Usuário</label>
+                        <input type="text" name="username" id="username" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Senha</label>
+                        <input type="password" name="password" id="password" class="form-control" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block mt-4">Registrar</button>
+                </form>
+                <div class="text-center mt-3">
+                    <a href="login.html" class="text-primary">Voltar ao Login</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('registerForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            Swal.fire({
+                title: 'Registrando...',
+                text: 'Por favor, aguarde enquanto criamos sua conta.',
+                icon: 'info',
+                showConfirmButton: false,
+                allowOutsideClick: false,
+                onBeforeOpen: () => {
+                    Swal.showLoading();
+                }
+            });
+
+            // Simulate an AJAX request
+            setTimeout(() => {
+                Swal.fire({
+                    title: 'Usuário Registrado!',
+                    text: 'Seu registro foi realizado com sucesso.',
+                    icon: 'success',
+                    confirmButtonText: 'OK'
+                }).then(() => {
+                    event.target.submit();
+                });
+            }, 2000);
+        });
+    </script>
+</body>
+
+</html>
